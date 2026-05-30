@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+                .main{
+            text-align: center;
+            margin: auto;
+            background-color:red;
+            color: white;
+            width: 50%;
+            height: 300px;
+            padding: 30px;
+            border-style: solid;
+            border-color: blue;
+            border-radius: 40px;
+            
+        }
+
+        button{
+            width: 20%;
+            height: 30px;
+            border-radius: 20px;
+            
+    
+        }
+        input {
+            width: 50%;
+            height: 30px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="body">
+    <div class="main">
+        <div>
+            <h1>CALCULATOR</h1>
+        </div>
+        <div>
+            <input id="inp" type="button" value="" readonly>
+        </div>
+<br>
+        <div>
+            <button onclick="clr()">Clear</button>
+            <button onclick="clrAll()">Clear all</button>
+        </div>
+
+        <div>
+            <button onclick="btnclick(9)">9</button>
+            <button onclick="btnclick(8)">8</button>
+            <button onclick="btnclick(7)">7</button>
+            <button onclick="btnclick(`+`)">+</button>
+        </div>
+
+        <div>
+            <button onclick="btnclick(6)">6</button>
+            <button onclick="btnclick(5)">5</button>
+            <button onclick="btnclick(4)">4</button>
+            <button onclick="btnclick(`-`)">-</button>
+        </div>
+
+        <div>
+            <button onclick="btnclick(3)">3</button>
+            <button onclick="btnclick(2)">2</button>
+            <button onclick="btnclick(1)">1</button>
+            <button onclick="btnclick(`*`)">x</button>
+        </div>
+
+        <div>
+            <button onclick="btnclick(0)">0</button>
+            <button onclick="btnclick(`.`)">.</button>
+            <button onclick="btnclick(`/`)">/</button>
+            <button onclick="equalTo()">=</button>
+        </div>
+    </div>
+</div>
+<script>
+    var getInput=document.getElementById("inp")
+
+function btnclick(e){
+    getInput.value += e
+}
+
+function equalTo(){
+    getInput.value= eval(getInput.value)
+}
+
+function clrAll(){
+    getInput.value=``
+}
+
+function clr(){
+    getInput.value= getInput.value.slice(0,-1);
+
+}
+    </script>
+    
+</body>
+</html>
