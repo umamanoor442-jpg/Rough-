@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stopwatch</title>
+    <style>
+    .amain {
+        border:solid black 2px;
+        margin-bottom:50px;
+        width:95%;
+        border-radius:13%;
+    }   
+.main {
+    border-radius:10%;
+    padding:2px;
+width:70%;
+height:500px;
+background-color: pink;
+ border:solid black 5px;
+    font-size:xx-large;
+   
+}
+.in{
+   
+ display: inline-block;
+}
+.BIG{
+    border-radius:20%;
+    height:60px;
+    background-color:pink;
+
+   font-size:xx-large;
+}
+.h{
+    width:95%;
+    padding-top:20px;
+    border-radius:15%;
+    border:solid black 2px;
+    height:100px;
+}
+    </style>
+    
+</head>
+<body>
+<center>
+<div class="main">
+    <h1 class="h">⏰ STOPWATCH ⏰ </h1>
+    <div class="amain">
+        
+        <h1 class="in" id="min">00 </h1>
+        <p class="in" >🄼🄸🄽</p>
+        <h1 class="in" id="sec">00 </h1>
+        <p class="in" > 🅂🄴🄲
+</p>
+        <h1 class="in" id="msec">00 </h1>
+        <p class="in" > 🄼🅂</p>
+        
+    </div>
+    
+    <div>
+        <button class="BIG">START ▶️</button>
+       
+        <button class="BIG">STOP 🛑</button>
+        <button class="BIG">RESTART 🔄</button>
+    </div>
+</div>
+</center>
+<script>
+    var minutes = 0, seconds = 0, milliseconds = 0;
+    var timerInterval = null;
+    var main = false;
+    var accumulatedTime = 0;
+    var startTimeReference = 0;
+
+    var minElem = document.querySelector('#min');
+    var secElem = document.querySelector('#sec');
+    var msecElem = document.querySelector('#msec');
+
+    function updateDisplay() {
+        minElem.textContent = String(minutes).padStart(2, '0');
+        secElem.textContent = String(seconds).padStart(2, '0');
+        msecElem.textContent = String(milliseconds).padStart(2, '0');
+    }
+
+    function convertMsToTime(totalMs) {
+        var mins = Math.floor(totalMs / 60000);
+        var secs = Math.floor((totalMs % 60000) / 1000);
+        var msecs = Math.floor((totalMs % 1000) / 10);
+        return { mins, secs, msecs };
+    }
+
+    function refresh() {
+        var { mins, secs, msecs } = convertMsToTime(accumulatedTime);
+        minutes = mins;
+        seconds = secs;
+        milliseconds = msecs;
+        updateDisplay();
+    }
+
+    function tick() {
+        if (main) return;
+        var now = Date.now();
+        var elapsed = accumulatedTime + (now - startTimeReference);
+        var { mins, secs, msecs } = convertMsToTime(elapsed);
+        minutes = mins;
+        seconds = secs;
+        milliseconds = msecs;
+        updateDisplay();
+    }
+
+    function start() {
+        if (main) return;
+      isRunning = true;
+        startTimeReference = Date.now();
+        timerInterval = setInterval(tick, 10);
+    }
+
+    function stop() {
+        if (main) return;
+        accumulatedTime += (Date.now() - startTimeReference);
+        isRunning= false;
+        clearInterval(timerInterval);
+        timerInterval = null;
+        refresh();
+    }
+
+    function restart() {
+        if (main) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            isRunning= false;
+        }
+        accumulatedTime = 0;
+        minutes = 0;
+        seconds = 0;
+        milliseconds = 0;
+        updateDisplay();
+    }
+
+   
+    var btns = document.querySelectorAll('.BIG');
+    if (btns.length >= 3) {
+        btns[0].addEventListener('click', start);
+        btns[1].addEventListener('click', stop);
+        btns[2].addEventListener('click', restart);
+    }
+</script>
+
+</body>
+</html>
