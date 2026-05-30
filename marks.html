@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <center>
+    <h1>MARKSHEET</h1></center>
+
+    <script>
+var Username= prompt("Enter your name");
+var English= +prompt("Enter your English marks");
+var Urdu= +prompt("Enter your Urdu marks");
+var Mathematics= +prompt("Enter your Mathematics marks");
+var Physics= +prompt("Enter your Physics marks");
+var Chemistry= +prompt("Enter your Chemistry marks");
+
+var Total= English + Urdu + Mathematics + Physics + Chemistry;
+var Perc= (Total/500)*100;
+if(Total>= "500"){
+    document.writeln("INVALID MARKS")
+}
+
+else if (Perc >= 90){
+  grade = "A+";
+}
+
+else if (Perc >= 80){
+    grade = "A";
+}
+
+else if (Perc >= 70){
+    grade = "B";
+}
+
+else if (Perc >= 60){
+    grade = "C";
+}
+
+else if (Perc >= 50){
+    grade = "D";
+}
+
+else {
+    grade = "Fail";
+}
+
+document.writeln(
+    "Name of student is : " + Username + "<br>" +
+    "English Marks of student are: " + English + "<br>" +
+    "Urdu Marks of student are: " + Urdu + "<br>" +
+    "Mathematics Marks of student are: " + Mathematics + "<br>" +
+    "Physics Marks of student are: " + Physics + "<br>" +
+    "Chemistry Marks of student are:" + Chemistry + "<br>" +
+    "Percentage of student is:" + Perc + "<br>" + 
+    "Total Marks of student is :" + Total + "<br>" +
+    "Grade of student is:" + grade  
+)
+</script>
+</body>
+</html>
