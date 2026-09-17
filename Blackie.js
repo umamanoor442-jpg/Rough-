@@ -1,13 +1,9 @@
 
 
-
-
-
 function calculate(){
 var num1= +prompt("Enter first number")
-var  op= prompt("Enter Operation")
-var  num2= +prompt("Enter Second number")
-
+var  op=  prompt("Enter an operator")
+var  num2= +prompt("Enter second number")
 
 
 if(op== "+" | op== "-" | op== "*" | op== "/" | op== "%" ){
@@ -36,9 +32,8 @@ alert(mod)
 else{
     alert("that is not an assignment")
 }
+
 }
-
-
 
 
 
